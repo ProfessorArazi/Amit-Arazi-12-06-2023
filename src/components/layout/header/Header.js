@@ -18,6 +18,8 @@ const Header = () => {
   const tempType = useSelector((state) => state.weatherData.tempType);
 
   useEffect(() => {
+    document.title = "Weather App";
+
     const setDefaultWeather = async () => {
       // setting Tel Aviv data as the default data
 
@@ -38,41 +40,43 @@ const Header = () => {
     <>
       <div className={`navbar ${theme === "dark" ? "dark" : ""}`}>
         <div className="top">
-        <h1>Weather Task</h1>
-        <div className="navbar-buttons">
-          <Link to="/" className="nav-link">
-            Home
-          </Link>
-          <Link to="/favorites" className="nav-link">
-            Favorites
-          </Link>
-        </div>
+          <h1>Weather Task</h1>
+          <div className="navbar-buttons">
+            <Link to="/" className="nav-link">
+              Home
+            </Link>
+            <Link to="/favorites" className="nav-link">
+              Favorites
+            </Link>
+          </div>
         </div>
         <div className="actions">
-        {tempType === "c" ? (
-          <RiCelsiusFill onClick={() => dispatch(setTempType("f"))} size={40} />
-        ) : (
-          <RiFahrenheitFill
-            onClick={() => dispatch(setTempType("c"))}
-            size={40}
-          />
-        )}
-        {theme === "light" ? (
-          <BsFillSunFill
-            onClick={() => dispatch(setTheme("dark"))}
-            size={40}
-            color="#FFD700"
-          />
-        ) : (
-          <MdDarkMode
-            size={40}
-            onClick={() => dispatch(setTheme("light"))}
-            className="dark-mode-icon"
-          />
-        )}
+          {tempType === "c" ? (
+            <RiCelsiusFill
+              onClick={() => dispatch(setTempType("f"))}
+              size={40}
+            />
+          ) : (
+            <RiFahrenheitFill
+              onClick={() => dispatch(setTempType("c"))}
+              size={40}
+            />
+          )}
+          {theme === "light" ? (
+            <BsFillSunFill
+              onClick={() => dispatch(setTheme("dark"))}
+              size={40}
+              color="#FFD700"
+            />
+          ) : (
+            <MdDarkMode
+              size={40}
+              onClick={() => dispatch(setTheme("light"))}
+              className="dark-mode-icon"
+            />
+          )}
+        </div>
       </div>
-      </div>
- 
     </>
   );
 };
