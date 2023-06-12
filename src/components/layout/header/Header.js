@@ -37,6 +37,7 @@ const Header = () => {
   return (
     <>
       <div className={`navbar ${theme === "dark" ? "dark" : ""}`}>
+        <div className="top">
         <h1>Weather Task</h1>
         <div className="navbar-buttons">
           <Link to="/" className="nav-link">
@@ -46,8 +47,8 @@ const Header = () => {
             Favorites
           </Link>
         </div>
-      </div>
-      <div className="actions">
+        </div>
+        <div className="actions">
         {tempType === "c" ? (
           <RiCelsiusFill onClick={() => dispatch(setTempType("f"))} size={40} />
         ) : (
@@ -70,6 +71,8 @@ const Header = () => {
           />
         )}
       </div>
+      </div>
+ 
     </>
   );
 };

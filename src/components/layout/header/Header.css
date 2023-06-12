@@ -1,9 +1,15 @@
 .navbar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 10px;
+  flex-direction: column;
+  padding: 10px 30px;
   background-color: #f2f2f2;
+}
+
+.top {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .navbar.dark {
@@ -26,6 +32,7 @@
   display: flex;
   justify-content: space-between;
   padding: 20px;
+  width: 100%;
 }
 .actions svg {
   cursor: pointer;
@@ -45,4 +52,10 @@
 
 .navbar-buttons .nav-link:hover {
   background-color: #ccc;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px;
+  }
 }
