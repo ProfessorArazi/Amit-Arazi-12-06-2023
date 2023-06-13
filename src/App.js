@@ -8,9 +8,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
-    
     // Routing
-    
+
     <BrowserRouter>
       <ToastContainer />
       <Header />
