@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
-import { getCityDataHandler } from "../../../http";
+import { getCityDataHandler, getFiveDaysHandler } from "../../../http";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setCurrentWeather,
@@ -23,9 +23,9 @@ const Header = () => {
   const changeTempType = async (type) => {
     // updating currentWeather when the tempType changes
 
-    const data = await getCityDataHandler(currentWeather, type === "c");
+    const data = await getFiveDaysHandler(currentWeather, type === "c");
     if (data) {
-      dispatch(setCurrentWeather(data));
+      dispatch(setCurrentWeather({ ...currentWeather, ...data }));
       dispatch(setTempType(type));
     }
   };
