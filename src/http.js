@@ -40,7 +40,7 @@ export const getCityDataHandler = async (option, metric) => {
   )
     .then((res) => {
       return {
-        city: option.LocalizedName,
+        city: option.LocalizedName || option.city,
         metric: res.data[0].Temperature.Metric.Value,
         imperial: res.data[0].Temperature.Imperial.Value,
         WeatherText: res.data[0].WeatherText,
@@ -53,9 +53,8 @@ export const getCityDataHandler = async (option, metric) => {
 };
 
 export const getFiveDaysHandler = async (option, metric) => {
-  
   // getting the five days data
-  
+
   const fiveDays = await axios(
     `${process.env.REACT_APP_API_URL}/forecasts/v1/daily/5day/${option.Key}?apikey=${process.env.REACT_APP_API_KEY}&metric=${metric}`
   )

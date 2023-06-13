@@ -112,7 +112,7 @@ const Home = () => {
           </ul>
         )}
       </div>
-      {currentWeather.key && (
+      {currentWeather.Key && (
         <div className={`container ${theme === "dark" ? "dark" : ""}`}>
           <div className="header">
             <div className="header-top">

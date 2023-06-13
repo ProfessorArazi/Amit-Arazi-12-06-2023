@@ -16,6 +16,19 @@ const Header = () => {
   const dispatch = useDispatch();
   const theme = useSelector((state) => state.layout.theme);
   const tempType = useSelector((state) => state.weatherData.tempType);
+  const currentWeather = useSelector(
+    (state) => state.weatherData.currentWeather
+  );
+
+  const changeTempType = async (type) => {
+    // updating currentWeather when the tempType changes
+
+    const data = await getCityDataHandler(currentWeather, type === "c");
+    if (data) {
+      dispatch(setCurrentWeather(data));
+      dispatch(setTempType(type));
+    }
+  };
 
   useEffect(() => {
     document.title = "Weather App";
@@ -34,7 +47,7 @@ const Header = () => {
     };
 
     setDefaultWeather();
-  }, [dispatch, tempType]);
+  }, [dispatch]);
 
   return (
     <>
@@ -52,15 +65,9 @@ const Header = () => {
         </div>
         <div className="actions">
           {tempType === "c" ? (
-            <RiCelsiusFill
-              onClick={() => dispatch(setTempType("f"))}
-              size={40}
-            />
+            <RiCelsiusFill onClick={() => changeTempType("f")} size={40} />
           ) : (
-            <RiFahrenheitFill
-              onClick={() => dispatch(setTempType("c"))}
-              size={40}
-            />
+            <RiFahrenheitFill onClick={() => changeTempType("c")} size={40} />
           )}
           {theme === "light" ? (
             <BsFillSunFill
